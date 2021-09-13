@@ -1,5 +1,5 @@
 print("Hola Mundo....Como estan!!")
-a=50
+a=100
 b=5
 c=2
 print("Suma:", (a+b))
