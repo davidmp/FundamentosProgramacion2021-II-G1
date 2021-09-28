@@ -3,6 +3,7 @@ public class BecaEstudiante {
  static Scanner sc = new Scanner(System.in);
 
 static void becaPresEst(){
+
     //Declaracion de variables e inicializacion
     int edad=0;
     double promedio=0, montoBeca=0;
@@ -39,6 +40,7 @@ static void becaPresEst(){
     }else{
       System.out.println("Felicitaciones Ud. es acreedor de una Beca por el Monto de: $"+montoBeca);
     }
+
 }
 
 
@@ -73,5 +75,9 @@ public static void main(String[] args) {
   //becaPresEst();
   mostrarDiaLetras();
 }
+
+  
+
+
 
 }
