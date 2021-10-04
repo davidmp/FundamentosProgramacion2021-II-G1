@@ -2,7 +2,8 @@ import java.util.Scanner;
 public class BecaEstudiante {
  static Scanner sc = new Scanner(System.in);
 
-static void becaPresEst(){
+static void becaPresEstDMP(){
+
     //Declaracion de variables e inicializacion
     int edad=0;
     double promedio=0, montoBeca=0;
@@ -39,8 +40,8 @@ static void becaPresEst(){
     }else{
       System.out.println("Felicitaciones Ud. es acreedor de una Beca por el Monto de: $"+montoBeca);
     }
-}
 
+}
 
 static void mostrarDiaLetras(){
   //Definir variables
@@ -65,13 +66,30 @@ static void mostrarDiaLetras(){
   System.out.println("El dia es: "+nombredia);
 }
 
+static void suma20mumerosPares(){
+//Declarar variables e inicializacion de valores
+int numInit=1, sumaNumPar=0;
+//Proceso
+  while(numInit <= 20) {
+    if(numInit%2==0){
+      sumaNumPar=sumaNumPar+numInit;
+    }
+    numInit++;//numInit=numInit+1;
+  }
+//Datos de Salida
+  System.out.println("La suma de numeros pares entre 1 y 20 es:"+sumaNumPar);
+}
 
-
-
-
+static void menuOpciones(){  
+}
 public static void main(String[] args) {
   //becaPresEst();
-  mostrarDiaLetras();
+  //mostrarDiaLetras();
+  suma20mumerosPares();
 }
+
+  
+
+
 
 }
