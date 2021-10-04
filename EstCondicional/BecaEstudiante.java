@@ -4,8 +4,6 @@ public class BecaEstudiante {
 
 
 static void becaPresEst(){
-
-
     //Declaracion de variables e inicializacion
     int edad=0;
     double promedio=0, montoBeca=0;
@@ -82,12 +80,28 @@ int numInit=1, sumaNumPar=0;
   System.out.println("La suma de numeros pares entre 1 y 20 es:"+sumaNumPar);
 }
 
-static void menuOpciones(){  
+static void menuOpciones(){ 
+  int opcionesA=0;
+  System.out.println("-------------------------------");
+  String msg="\nIngrese el Algoritmo que desea Probar 1=xxxx,2=xxxx,3=numeros pares:";
+  System.out.println(msg);
+  opcionesA=sc.nextInt();  
+  while(opcionesA!=0){
+      switch(opcionesA) {
+        case 1: becaPresEst();break;
+        case 2: mostrarDiaLetras();break;
+        case 3: suma20mumerosPares();break;
+        default:
+          System.out.println("El Algoritmo no existe!");
+      }   
+    System.out.println("------------------------------");  
+    System.out.println(msg);
+    opcionesA=sc.nextInt();        
+  }
 }
+
 public static void main(String[] args) {
-  //becaPresEst();
-  //mostrarDiaLetras();
-  suma20mumerosPares();
+  menuOpciones();
 }
 
   
