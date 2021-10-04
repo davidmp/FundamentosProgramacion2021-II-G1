@@ -2,7 +2,9 @@ import java.util.Scanner;
 public class BecaEstudiante {
  static Scanner sc = new Scanner(System.in);
 
-static void becaPresEstDMP(){
+
+static void becaPresEst(){
+
 
     //Declaracion de variables e inicializacion
     int edad=0;
