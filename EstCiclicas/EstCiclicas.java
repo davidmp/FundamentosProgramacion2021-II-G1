@@ -17,6 +17,20 @@ static void suma20mumerosParesWhile(){
     System.out.println("La suma de numeros pares entre 1 y 20 es:"+sumaNumPar);
 }
 
+static void suma20numerosParesDowhile(){
+  //Declaracion de variables e inicializacion de variables
+  int sumaNumPar=0, numInit=1;
+  //Proceso
+  do{
+    if(numInit%2==0){
+      sumaNumPar=sumaNumPar+numInit;
+    }
+    numInit++;
+  }while(numInit<=20);
+  //Datos de salida
+  System.out.println("La suma de numeros pares entre 1 y 20 es:"+sumaNumPar);
+}
+
 static void suma20mumerosParesFor(){
   //Declarar variables e inicializacion de valores
   int sumaNumPar=0;
@@ -42,6 +56,7 @@ static void suma20mumerosParesFor(){
         switch(opcionesA) {
           case 1: suma20mumerosParesWhile();break;
           case 2: suma20mumerosParesFor();break;
+          case 3: suma20numerosParesDowhile(); break;
           default:
             System.out.println("El Algoritmo no existe!");
         }   
