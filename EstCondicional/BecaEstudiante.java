@@ -67,17 +67,17 @@ static void mostrarDiaLetras(){
 }
 
 static void suma20mumerosPares(){
-//Declarar variables e inicializacion de valores
-int numInit=1, sumaNumPar=0;
-//Proceso
-  while(numInit <= 20) {
-    if(numInit%2==0){
-      sumaNumPar=sumaNumPar+numInit;
+  //Declarar variables e inicializacion de valores
+  int numInit=1, sumaNumPar=0;
+  //Proceso
+    while(numInit <= 20) {
+      if(numInit%2==0){
+        sumaNumPar=sumaNumPar+numInit;
+      }
+      numInit++;//numInit=numInit+1;
     }
-    numInit++;//numInit=numInit+1;
-  }
-//Datos de Salida
-  System.out.println("La suma de numeros pares entre 1 y 20 es:"+sumaNumPar);
+  //Datos de Salida
+    System.out.println("La suma de numeros pares entre 1 y 20 es:"+sumaNumPar);
 }
 
 static void menuOpciones(){ 
@@ -91,6 +91,7 @@ static void menuOpciones(){
         case 1: becaPresEst();break;
         case 2: mostrarDiaLetras();break;
         case 3: suma20mumerosPares();break;
+        case 4: personaMenor();break;
         default:
           System.out.println("El Algoritmo no existe!");
       }   
@@ -99,6 +100,41 @@ static void menuOpciones(){
     opcionesA=sc.nextInt();        
   }
 }
+
+static void personaMenor(){
+  //declarar variables 
+  String nomA, nomB, nomC, nomM="";
+  int edadA, edadB, edadC, edadM=0;
+  //Datos de Entrada
+  System.out.println("Ingrese nombre 1ra Persona:");
+  nomA=sc.next();
+  System.out.println("Ingrese edad 1ra Persona:");
+  edadA=sc.nextInt();  
+  System.out.println("Ingrese nombre 2da Persona:");
+  nomB=sc.next();
+  System.out.println("Ingrese edad 2da Persona:");
+  edadB=sc.nextInt();  
+  System.out.println("Ingrese nombre 3ra Persona:");
+  nomC=sc.next();
+  System.out.println("Ingrese edad 3ra Persona:");
+  edadC=sc.nextInt();      
+  //Proceso
+  if(edadA<edadB && edadA<edadC){
+    edadM=edadA;
+    nomM=nomA;
+  }
+if(edadB<edadA && edadB<edadC){
+    edadM=edadB;
+    nomM=nomB;
+  }
+if(edadC<edadA && edadC<edadB){
+    edadM=edadC;
+    nomM=nomC;
+  }    
+  //Datos de salida
+  System.out.println("La persona menor es: "+ nomM +" y su edad es:"+edadM);
+}
+
 
 public static void main(String[] args) {
   menuOpciones();
