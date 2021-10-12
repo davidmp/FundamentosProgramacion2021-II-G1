@@ -1,3 +1,4 @@
+import java.math.BigInteger;
 import java.util.Scanner;
 
 class EstCiclicas{
@@ -84,13 +85,26 @@ System.out.println("Suma de creditos cursados:"+sumCred);
 System.out.println("Promedio Ponderado:"+promPond);
 }
 
-static int factorial(int n){
+static long factorial(int n){
     //declarar variables
-    int resultF=1;
+    long resultF=1;
     //Proceso
     if(n>1){
         for(int i=1; i<=n;i++){
             resultF=resultF*i;
+        }
+    }
+    //Datos de salida
+    return resultF;
+}
+
+static BigInteger factorialBig(int n){
+    //declarar variables
+    BigInteger resultF=new BigInteger("1");
+    //Proceso
+    if(n>1){
+        for(int i=1; i<=n;i++){
+            resultF=resultF.multiply(new BigInteger(String.valueOf(i)));
         }
     }
     //Datos de salida
@@ -116,11 +130,11 @@ static int factorial(int n){
           case 5: 
           System.out.println("Ingrese un numero para calcular el factorial:");
           int n=sc.nextInt();
-          System.out.println("El Factorial de "+n+" es:"+factorial(n)); break;
+          System.out.println("El Factorial de "+n+" es:"+factorialBig(n)); break;
           default:
             System.out.println("El Algoritmo no existe!");
         }   
-      System.out.println("------------------------------"); //3.628.800 
+      System.out.println("------------------------------"); //15.511.210.043.330.985.984.000.000
       System.out.println(msg);
       opcionesA=sc.nextInt();        
     }
