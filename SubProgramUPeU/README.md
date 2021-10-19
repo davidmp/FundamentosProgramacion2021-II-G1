@@ -1,4 +1,4 @@
-#comando para crear proyecto de tipo Maven
+#Comando para crear proyecto de tipo Maven
 
   mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart
 
@@ -11,8 +11,8 @@
     package: pe.edu.upeu.app
 
     Y : : Y
-    
-# Agregar el siguiente comando
+
+# Agregar el siguiente codigo en el archivo pom.xml
   
   ```xml
     <properties>
@@ -43,7 +43,7 @@
   ```
 
 
-# Comandos Proyecto MVN
+# Comandos para empaquetar Proyecto MVN
   mvn clean
 
   mvn clean package
