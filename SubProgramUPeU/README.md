@@ -2,6 +2,16 @@
 
   mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart
 
+    groupId: upeu.edu.pe
+    
+    artifactId: SubProgramUPeU
+
+    version: V1.0
+
+    package: pe.edu.upeu.app
+
+    Y : : Y
+    
 # Agregar el siguiente comando
   
   ```xml
