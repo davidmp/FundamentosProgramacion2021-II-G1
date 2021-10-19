@@ -1,16 +1,19 @@
 #comando para crear proyecto de tipo Maven
+
   mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart
 
 # Agregar el siguiente comando
   
-  ```xml<properties>
+  ```xml
+    <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
     </properties> 
   ```
 
-  ```xml<build>
+  ```xml
+  <build>
     <plugins>
       <plugin>
       <!-- Build an executable JAR -->
