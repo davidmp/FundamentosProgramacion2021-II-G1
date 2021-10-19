@@ -1,2 +1,2 @@
-language = "undefined"
-run = ""
+language = "java"
+run = "java -jar SubProgramUPeU/target/SubProgramUPeU-1.0-SNAPSHOT.jar"
