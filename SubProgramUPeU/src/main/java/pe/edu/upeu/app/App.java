@@ -12,6 +12,7 @@ public class App{
         System.out.println( "Hello World!" );
          sp=new SubProgramas();
          sp.saludo();
+         sp.otroSaludo("Raul");
 
     }
 }
