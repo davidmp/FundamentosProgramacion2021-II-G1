@@ -1,5 +1,6 @@
 package pe.edu.upeu.app;
 import pe.edu.upeu.modulo.*;
+import pe.edu.upeu.util.*;
 import java.util.Scanner;
 
 public class App{
@@ -7,6 +8,7 @@ public class App{
    public static SubProgramas sp;
    public static Recursividad rc=new Recursividad();
    public static Scanner sc=new Scanner(System.in);
+   static LeerTeclado lt=new LeerTeclado();
 
     static void menuOpciones(){ 
       sp=new SubProgramas();
@@ -34,8 +36,7 @@ public class App{
             int nx=sc.nextInt();
             System.out.println(rc.fibonacci(nx)); break;
             case 5: 
-            System.out.println("Ingrese un numero:");       
-            int nxx=sc.nextInt();
+            int nxx=lt.leer(0,"Ingrese un numero");
             System.out.println(rc.fibonacciNRecurBig(nxx)); break;
             default: System.out.println("El Algoritmo no existe!");
           }   
@@ -46,7 +47,11 @@ public class App{
     }
 
     public static void main( String[] args ){
-       System.out.println("*******Bienvenidos al Sistema**********");
+       System.out.println("*******Bienvenidos al Sistema**********");      
+      int edad=lt.leer(0,"Ingrese su edad");
+
+      System.out.println(edad);
+      
        menuOpciones();
     }
 }
