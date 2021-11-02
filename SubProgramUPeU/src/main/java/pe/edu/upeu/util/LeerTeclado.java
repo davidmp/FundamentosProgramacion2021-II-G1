@@ -20,6 +20,7 @@ public int leer(int val, String msg){
   return val;
 }
 
+
 public double leer(double val, String msg){
   System.out.print(msg+":");
   try{
