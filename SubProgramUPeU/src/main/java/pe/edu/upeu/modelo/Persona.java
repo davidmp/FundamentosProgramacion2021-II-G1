@@ -17,4 +17,6 @@ public class Persona {
         this.dni=dni;
     }
 
+    
+
 }
