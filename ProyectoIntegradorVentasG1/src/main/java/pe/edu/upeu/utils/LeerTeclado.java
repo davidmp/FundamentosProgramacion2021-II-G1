@@ -21,9 +21,9 @@ public int leer(int val, String msg){
 
 
 public double leer(double val, String msg){
-  System.out.print(msg+":");
+  System.out.print(msg+":");  
   try{
-    val=Double.parseDouble(br.readLine());
+    val=Double.parseDouble(String.valueOf(br.readLine()));
   }catch(Exception e){
     val=leer(val,msg);
   }

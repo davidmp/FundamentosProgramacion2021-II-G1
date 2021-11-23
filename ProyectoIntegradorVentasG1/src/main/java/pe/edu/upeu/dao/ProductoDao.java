@@ -15,10 +15,20 @@ public class ProductoDao extends AppCrud{
     LeerArchivo leerArch;
     ProductoTO prodTO;
 
+    String tipoProd="\nPeriodico\nRevista\n";
+
     public Object[][] crearProducto() {
-        leerArch=new LeerArchivo(TABLA_PRODUCTO);
-        
-        return null; 
+        leerArch=new LeerArchivo(TABLA_PRODUCTO);    
+        prodTO=new ProductoTO();
+        prodTO.setIdProd(generarId(leerArch, 0, "P", 1));
+        prodTO.setNombre(leerTecla.leer("", "Ingrese nombre del Producto"));
+        prodTO.setPrecio(leerTecla.leer(0.0, "Ingrese precio base del Producto"));
+        prodTO.setUnidadMed(leerTecla.leer("", "Ingrese unidad de medidad"));
+        prodTO.setTipo(leerTecla.leer("", "Ingrese el tipo ("+tipoProd+")"));
+        prodTO.setUtilidad(leerTecla.leer(0.0, "Ingrese la utilidad Ejem: 0.02"));
+        prodTO.setStock(leerTecla.leer(0, "Ingrese el Stock"));
+        leerArch=new LeerArchivo(TABLA_PRODUCTO);           
+        return agregarContenido(leerArch, prodTO); 
     }
 
     
