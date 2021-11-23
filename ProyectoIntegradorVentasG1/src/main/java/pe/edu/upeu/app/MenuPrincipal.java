@@ -24,7 +24,10 @@ public class MenuPrincipal {
                     } break;
 
             
-              case 2:  break;              
+              case 2:{
+                prodDao=new ProductoDao();
+                prodDao.imprimirProductos();
+              }  break;              
               default: System.out.println("La opcion ingresada no existe!");
             }   
           System.out.println("----------------------------------------------------------------"); //15.511.210.043.330.985.984.000.000        
