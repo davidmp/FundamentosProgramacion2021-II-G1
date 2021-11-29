@@ -24,19 +24,28 @@ public class UsuarioDao extends AppCrud{
         usuTO.setUsuario(leerTecla.leer("", "Ingrese su usuario"));  
         
         Console cons=System.console();
+        System.out.println("Ingrese su clave:");
         char[] dataPass=cons.readPassword();
-        usuTO.setPassword(dataPass.toString());      
+        usuTO.setPassword(String.valueOf(dataPass));      
         usuTO.setPerfil(leerTecla.leer("", "Ingrese el perfil (VENDEDOR/ADMINISTRADOR)"));
         agregarContenido(leerArch, usuTO);
 
     }
 
 
-    public boolean name() {        
+    public boolean login() {        
         util.clearConsole();
         System.out.println("*********Autentication System**********");
         leerArch=new LeerArchivo(TABLA_USUARIO);        
+        String user=leerTecla.leer("", "Ingrese su usuario");
+        Object[][] data= buscarContenido(leerArch, 0, user);
+        Console cons=System.console();
+        System.out.println("Ingrese su clave:");
+        char[] dataPass=cons.readPassword();        
 
+        if(data.length==1 && data[0][1].equals(String.valueOf(dataPass))){
+            return true;
+        }
         return false;
     }
 
