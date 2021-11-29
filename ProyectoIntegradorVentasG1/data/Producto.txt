@@ -1,3 +1,3 @@
-P1	Correo	Periodico	1.0	1.0	100	Unidad
-P2	Trome	Periodico	1.0	1.0	200	Unidad
-P3	Sin Fronteras	Periodico	0.7	0.3	200	Unidad
+P1	Correo	Periodico	0.9	0.1	100	Unidad
+P3	Sin Fronteras	Periodico	0.8	0.3	200	Unidad
+P4	Diario el Peruano	Periodico	2.0	0.3	50	Unidad

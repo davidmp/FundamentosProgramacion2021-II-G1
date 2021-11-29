@@ -13,6 +13,8 @@ public class MenuPrincipal {
         String msg="\nEliga una Opcion"+ 
         "\n1=Crear Producto"+
         "\n2=Listar Producto"+
+        "\n3=Editar Producto"+
+        "\n4=Eliminar Producto"+
         "\n";     
         opcionesA=lt.leer(0, msg);  
         while(opcionesA!=0){
@@ -26,8 +28,19 @@ public class MenuPrincipal {
             
               case 2:{
                 prodDao=new ProductoDao();
-                prodDao.imprimirProductos();
-              }  break;              
+                prodDao.reportarProductos();
+              }  break; 
+              
+              case 3:{
+                prodDao=new ProductoDao();
+                prodDao.updateProducto();
+              }  break; 
+
+              case 4:{
+                prodDao=new ProductoDao();
+                prodDao.deleteProducto();
+              }  break; 
+              
               default: System.out.println("La opcion ingresada no existe!");
             }   
           System.out.println("----------------------------------------------------------------"); //15.511.210.043.330.985.984.000.000        
