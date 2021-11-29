@@ -9,6 +9,19 @@ public class MenuPrincipal {
     ProductoDao prodDao;
     UsuarioDao uDao;
 
+    public void mainLogin() {
+      uDao=new UsuarioDao();
+      if (uDao.login()) {
+
+        menuOpciones();
+
+        
+      }else{
+        System.out.println("Intente Nuevamente!!");
+        mainLogin();
+      }
+    }
+
     public void menuOpciones() {        
         int opcionesA=0;
         System.out.println("-----------------------Bienvenido al Sistema --------------------");
