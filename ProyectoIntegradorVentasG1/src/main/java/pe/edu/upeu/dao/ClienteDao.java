@@ -15,13 +15,13 @@ public class ClienteDao extends AppCrud{
     ClienteTO cTo;
 
     public void crearCliente(String dni) {
-        util.clearConsole();
-        leerArch=new LeerArchivo(TABLA_CLIENTE);
-        cTo=new ClienteTO();
-        cTo.setDni(dni);
-        if(validarDni(cTo.getDni())){
+        //util.clearConsole();        
+        cTo=new ClienteTO();        
+        if(validarDni(dni)){
+            cTo.setDni(dni);
             cTo.setNombre(leerTecla.leer("", "Ingrese su nombre"));
             cTo.setCelular(leerTecla.leer("", "Ingrese su Celular"));
+            leerArch=new LeerArchivo(TABLA_CLIENTE);
             agregarContenido(leerArch, cTo);
         }
     }

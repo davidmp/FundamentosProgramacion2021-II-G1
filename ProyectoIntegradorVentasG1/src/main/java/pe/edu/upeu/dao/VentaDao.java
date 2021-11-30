@@ -37,7 +37,7 @@ public class VentaDao extends AppCrud{
        if(ventTo!=null){
            util.clearConsole();
            System.out.println("**********Agregar productos a carrito de ventas**********");
-           
+
        }
     }
 
@@ -46,13 +46,15 @@ public class VentaDao extends AppCrud{
 
         venTO=new VentaTO();
         venTO.setIdVenta(generarId(leerArch, 0, "V", 1));
-        venTO.setDni(crearCliente(leerTecla.leer("", "Ingrese el Dni del Cliente")));
+        String dnix=leerTecla.leer("", "Ingrese el Dni del Cliente");
+        venTO.setDni(crearCliente(dnix));
         Date fecha=new Date();
         venTO.setFecha(formatofechahora.format(fecha));
         venTO.setSubtotal(0);
         venTO.setDescuento(0);
         venTO.setTotalimporte(0);
-
+        
+        leerArch=new LeerArchivo(TABLA_VENTAS);
         agregarContenido(leerArch, venTO);
 
         leerArch=new LeerArchivo(TABLA_VENTAS);
@@ -66,14 +68,17 @@ public class VentaDao extends AppCrud{
 
     public String crearCliente(String dni) {
         leerArch=new LeerArchivo(TABLA_CLIENTE);
-        Object[][] dataCli=buscarContenido(leerArch, 0, dni);
-        if(dni!=null && dataCli.length==1){
+        Object[][] dataCli=null;
+        dataCli=buscarContenido(leerArch, 0, dni);
+        if(dataCli!=null){
             return dni;
         }else{
-            ClienteDao cDao=new ClienteDao();
-            cDao.crearCliente(dni);
+            if(dni!=null && dataCli==null){
+                ClienteDao cDao=new ClienteDao();
+                cDao.crearCliente(dni);                
+            }
             return dni;
-        }        
+        }       
     }
 
     public VentaDetalleTO carritoVenta() {
