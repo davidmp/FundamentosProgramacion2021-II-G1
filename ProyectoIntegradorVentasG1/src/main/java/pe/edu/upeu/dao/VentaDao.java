@@ -1,6 +1,7 @@
 package pe.edu.upeu.dao;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import pe.edu.upeu.data.AppCrud;
 import pe.edu.upeu.modelo.ClienteTO;
@@ -32,16 +33,35 @@ public class VentaDao extends AppCrud{
 
 
     public void registrarVenta() {
-       
+       VentaTO ventTo=crearVenta();
+       if(ventTo!=null){
+           util.clearConsole();
+           System.out.println("**********Agregar productos a carrito de ventas**********");
+           
+       }
     }
 
     public VentaTO crearVenta() {
         leerArch=new LeerArchivo(TABLA_VENTAS);
+
         venTO=new VentaTO();
         venTO.setIdVenta(generarId(leerArch, 0, "V", 1));
         venTO.setDni(crearCliente(leerTecla.leer("", "Ingrese el Dni del Cliente")));
+        Date fecha=new Date();
+        venTO.setFecha(formatofechahora.format(fecha));
+        venTO.setSubtotal(0);
+        venTO.setDescuento(0);
+        venTO.setTotalimporte(0);
 
-        return null;    
+        agregarContenido(leerArch, venTO);
+
+        leerArch=new LeerArchivo(TABLA_VENTAS);
+        if(buscarContenido(leerArch, 0, venTO.getIdVenta()).length==1){
+            return venTO;
+        }else{ 
+            System.out.println("Intente nuevamente:");           
+            return crearVenta();
+        }               
     }
 
     public String crearCliente(String dni) {
@@ -63,6 +83,17 @@ public class VentaDao extends AppCrud{
 
     public void mostrarProductos() {
         leerArch=new LeerArchivo(TABLA_PRODUCTO);
+        Object[][] data=listarContenido(leerArch);
+        for (int i = 0; i < data.length; i++) {
+            System.out.print(data[i][0]+"="+data[i][1]+
+            "(Precio:"+
+            (
+            Double.parseDouble(String.valueOf(data[i][3]))+
+            Double.parseDouble(String.valueOf(data[i][4]))
+            )
+            +" / Stock: "+ data[i][5]+") |\t");
+        }
+        System.out.println("\n");
     }
 
 

@@ -209,7 +209,7 @@ public class AppCrud {
                         System.err.println("Error:"+e.getMessage());
                     } 
                     return datos;
-        }
+    }
 
     public Object[][] buscarContenido(LeerArchivo aq, int numColumna, String dato){
             Object[][] datos=null;	
