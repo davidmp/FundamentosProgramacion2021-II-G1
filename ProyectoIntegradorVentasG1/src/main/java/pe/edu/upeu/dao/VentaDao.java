@@ -3,6 +3,9 @@ package pe.edu.upeu.dao;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.fusesource.jansi.Ansi;
+import org.fusesource.jansi.AnsiConsole;
+
 import pe.edu.upeu.data.AppCrud;
 import pe.edu.upeu.modelo.ClienteTO;
 import pe.edu.upeu.modelo.ProductoTO;
@@ -15,6 +18,8 @@ import pe.edu.upeu.utils.UtilsX;
 public class VentaDao extends AppCrud{
     LeerTeclado leerTecla=new LeerTeclado();
     UtilsX util=new UtilsX();
+
+    Ansi color=new Ansi();
 
     final String TABLA_VENTAS="Ventas.txt";
     final String TABLA_VENTA_DETALLE="VentaDetalle.txt";
@@ -187,8 +192,12 @@ public class VentaDao extends AppCrud{
                    indiceVector++;
                 }
             }
-            //Imprimir Ventas           
-            System.out.println("===========Reporte Ventas entre "+fechaInit+" Y "+fechaFinal+"============");
+            //Imprimir Ventas     
+            AnsiConsole.systemInstall();
+
+            System.out.println(color.bgBrightYellow().fgBlack()
+            .a("===========Reporte Ventas entre "+fechaInit+" Y "+fechaFinal+"============").reset());
+            
             util.pintarLine('H', 40);
             util.pintarTextHeadBody('H', 3, "ID,DNI cliente,Fecha, Sub. Total, Descuento, Imp.Total");
             System.out.println("");
@@ -203,9 +212,15 @@ public class VentaDao extends AppCrud{
                 util.pintarTextHeadBody('B', 3, datax);
             }
             //System.out.println("");
+            color=new Ansi();
             util.pintarLine('H', 40);            
-            System.out.println("| Sub. Total: S/"+ subtotalX+" | Descuento: S/."+descuentoX+
-            " | Imp. Total: S/."+importeTX);
+            System.out.println(color.render(
+            
+            "| @|red Sub. Total:|@ | @|blue S/"+ subtotalX+" |@ | @|red Descuento: |@ @|blue S/."+descuentoX+
+            "|@ | @|red Imp. Total: |@ @|blue S/."+importeTX+"|@"
+            
+            )
+            );
             util.pintarLine('H', 40);            
 
 
