@@ -34,6 +34,7 @@ public class MenuPrincipal {
         "\n4=Eliminar Producto"+
         "\n5=Crear Nueno Usuario"+
         "\n6=Realizar una venta"+
+        "\n7=Reportar Ventas"+
         "\n";     
         opcionesA=lt.leer(0, msg);  
         while(opcionesA!=0){
@@ -70,6 +71,10 @@ public class MenuPrincipal {
                 ventDao.registrarVenta();
               }  break; 
               
+              case 7:{
+                ventDao=new VentaDao();
+                ventDao.reporteVentasRangoFecha();
+              }  break;               
               default: System.out.println("La opcion ingresada no existe!");
             }   
           System.out.println("----------------------------------------------------------------"); //15.511.210.043.330.985.984.000.000        

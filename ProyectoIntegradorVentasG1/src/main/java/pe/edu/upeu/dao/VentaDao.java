@@ -145,6 +145,76 @@ public class VentaDao extends AppCrud{
         System.out.println("\n");
     }
 
+    public void reporteVentasRangoFecha() {
+        util.clearConsole();
+        System.out.println("===================Registro Ventas==================");
+        String fechaInit=leerTecla.leer("", "Ingrese F. Inicio (dd-MM-yyyy)");
+        String fechaFinal=leerTecla.leer("", "Ingrese F. Final (dd-MM-yyyy)");
+        leerArch=new LeerArchivo(TABLA_VENTAS);
+        Object[][] dataV=listarContenido(leerArch);
+        int contadorVRD=0;
+        try {
+            //Para saber que cantidad de registros coinciden con el rango de fecha
+            for (int i = 0; i < dataV.length; i++) {
+                String[] fechaVentor=String.valueOf(dataV[i][2]).split(" ");
+                Date fechaVentaX=formatofecha.parse(fechaVentor[0]);
+                if(
+                (fechaVentaX.after(formatofecha.parse(fechaInit)) || fechaInit.equals(fechaVentor[0])) && 
+                (fechaVentaX.before(formatofecha.parse(fechaFinal)) || fechaFinal.equals(fechaVentor[0]))
+                ){
+                    contadorVRD++; 
+                }
+            }
 
+            //Pasar los datos a un Vetor de tipo VentaTO segun Rango Fechas
+            VentaTO[] dataReal=new VentaTO[contadorVRD];
+            int indiceVector=0;
+            for (int i = 0; i < dataV.length; i++) {
+                String[] fechaVentor=String.valueOf(dataV[i][2]).split(" ");
+                Date fechaVentaX=formatofecha.parse(fechaVentor[0]);
+                if(
+                (fechaVentaX.after(formatofecha.parse(fechaInit)) || fechaInit.equals(fechaVentor[0])) && 
+                (fechaVentaX.before(formatofecha.parse(fechaFinal)) || fechaFinal.equals(fechaVentor[0]))
+                ){
+                   VentaTO vTo=new VentaTO();
+                   vTo.setIdVenta(dataV[i][0].toString());
+                   vTo.setDni(dataV[i][1].toString());
+                   vTo.setFecha(dataV[i][2].toString());
+                   vTo.setDescuento(Double.parseDouble(String.valueOf(dataV[i][4])));
+                   vTo.setSubtotal(Double.parseDouble(String.valueOf(dataV[i][3])));
+                   vTo.setTotalimporte(Double.parseDouble(String.valueOf(dataV[i][5])));
+                   dataReal[indiceVector]=vTo;
+                   indiceVector++;
+                }
+            }
+            //Imprimir Ventas           
+            System.out.println("===========Reporte Ventas entre "+fechaInit+" Y "+fechaFinal+"============");
+            util.pintarLine('H', 40);
+            util.pintarTextHeadBody('H', 3, "ID,DNI cliente,Fecha, Sub. Total, Descuento, Imp.Total");
+            System.out.println("");
+            double subtotalX=0,descuentoX=0, importeTX =0;
+            util.pintarLine('H', 40);
+            for (VentaTO TOv : dataReal) {
+                String datax=TOv.getIdVenta()+","+TOv.getDni()+","+TOv.getFecha()+","+
+                TOv.getSubtotal()+","+TOv.getDescuento()+","+TOv.getTotalimporte();
+                subtotalX+=TOv.getSubtotal(); 
+                descuentoX+=TOv.getDescuento(); 
+                importeTX+=TOv.getTotalimporte();
+                util.pintarTextHeadBody('B', 3, datax);
+            }
+            //System.out.println("");
+            util.pintarLine('H', 40);            
+            System.out.println("| Sub. Total: S/"+ subtotalX+" | Descuento: S/."+descuentoX+
+            " | Imp. Total: S/."+importeTX);
+            util.pintarLine('H', 40);            
+
+
+        } catch (Exception e) {
+           System.err.println("Error al Reportar!!"+e.getMessage());
+        }
+
+        
+
+    }
         
 }
