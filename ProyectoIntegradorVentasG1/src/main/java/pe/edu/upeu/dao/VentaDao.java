@@ -40,7 +40,7 @@ public class VentaDao extends AppCrud{
        VentaTO ventTo=crearVenta();
        String opcion="SI";
        if(ventTo!=null){
-           util.clearConsole();
+           //util.clearConsole();
            System.out.println("**********Agregar productos a carrito de ventas**********");
             do {
                 VentaDetalleTO dataVD=carritoVenta(ventTo);   
@@ -94,13 +94,15 @@ public class VentaDao extends AppCrud{
         leerArch=new LeerArchivo(TABLA_CLIENTE);
         Object[][] dataCli=null;
         dataCli=buscarContenido(leerArch, 0, dni);
-        if(dataCli!=null){
-            return dni;
-        }else{
-            if(dni!=null && dataCli==null){
+        System.out.println("VEr:"+dataCli.length);
+        if(dataCli==null || dataCli.length==0){
+            if(dataCli.length==0){
                 ClienteDao cDao=new ClienteDao();
                 cDao.crearCliente(dni);                
             }
+            return dni;
+            
+        }else{
             return dni;
         }       
     }
