@@ -1,4 +1,4 @@
-#  addd plugin 
+#  add plugin 
 
 ```xml
  <plugin>
