@@ -5,14 +5,13 @@ public class TransformadasEjem {
 
     public void transformada05(int dimen, int num) {
         Object[][] matrizT=new Object[dimen][dimen];  
-              
+
         for (int f = 0; f < matrizT.length; f++) {
             for (int c =0; c<=f ; c++) {
                 matrizT[f][(matrizT[0].length-1)-c]=num;
                 num++;
             }
         }
-
         imprimirMatriz(matrizT);        
     }
 
