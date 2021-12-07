@@ -6,6 +6,8 @@ import java.util.Date;
 import org.fusesource.jansi.Ansi;
 import org.fusesource.jansi.AnsiConsole;
 
+
+
 import pe.edu.upeu.data.AppCrud;
 import pe.edu.upeu.modelo.ClienteTO;
 import pe.edu.upeu.modelo.ProductoTO;
@@ -18,8 +20,8 @@ import pe.edu.upeu.utils.UtilsX;
 public class VentaDao extends AppCrud{
     LeerTeclado leerTecla=new LeerTeclado();
     UtilsX util=new UtilsX();
-
-    Ansi color=new Ansi();
+    
+    Ansi color;
 
     final String TABLA_VENTAS="Ventas.txt";
     final String TABLA_VENTA_DETALLE="VentaDetalle.txt";
@@ -194,7 +196,7 @@ public class VentaDao extends AppCrud{
             }
             //Imprimir Ventas     
             AnsiConsole.systemInstall();
-
+            color=new Ansi();
             System.out.println(color.bgBrightYellow().fgBlack()
             .a("===========Reporte Ventas entre "+fechaInit+" Y "+fechaFinal+"============").reset());
             

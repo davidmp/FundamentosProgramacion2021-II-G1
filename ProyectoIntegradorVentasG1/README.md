@@ -43,3 +43,10 @@
   </plugins>
 ```
 
+# Packagen Project
+
+mvn clean package
+
+# Run Project 
+
+java -jar <<--file-->>.jar
